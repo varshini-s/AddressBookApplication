@@ -37,6 +37,22 @@ class Contact
 
     }
 
+    get address() 
+    {
+        return this._address;
+    }
+    set address(address)
+    {
+        if (ADDRESS_PATTERN.test(address)) 
+        {
+            this._address = address;
+        }
+        else 
+        {
+            throw "Address is Invalid";
+        }
+    }
+
     
 
 }
