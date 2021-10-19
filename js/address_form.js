@@ -150,3 +150,7 @@ const setSelectedIndex = (id, index) => {
     element.selectedIndex = index
 }
 
+const setTextValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.textContent = value;
+}
