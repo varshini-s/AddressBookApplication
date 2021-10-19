@@ -50,5 +50,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
             addressError.textContent = e;
         }
     });
+
+    const zip = document.querySelector('#zip');
+    const zipError = document.querySelector('.zip-error');
+    zip.addEventListener('input', function () {
+        if (zip.value.length == 0) {
+            zipError.textContent = "";
+            return;
+        }
+        try {
+            (new AddressBook()).zip = zip.value;
+            zipError.textContent = "";
+
+        }
+        catch (e) {
+            zipError.textContent = e;
+        }
+    });
+
 });
 
