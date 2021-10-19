@@ -9,19 +9,27 @@ var stateToCityMap = {
     "Meghalaya": ["Cherrapunji", "Tura", "Jowai", "Baghmara", "Nongpoh"]
 }
 
-        }
-        catch (e) {
-            textError.textContent = e;
-        }
-    });
+function getCityOptions(value) 
+{
+    document.getElementById("city").disabled = false;
 
-    const phoneNumber = document.querySelector('#phoneNumber');
-    const phoneNumberError = document.querySelector('.phone-number-error');
-    phoneNumber.addEventListener('input', function () {
-        if (phoneNumber.value.length == 0) {
-            phoneNumberError.textContent = "";
-            return;
+    if (value.length == 0) {
+        document.getElementById("city").innerHTML = "<option></option>";
+    }
+    else {
+        let citiesOptions = "<option value=\"\" disabled selected>Select City</option>";
+        let sortedCityList=stateToCityMap[value].sort();
+        
+        for (cityId in sortedCityList) 
+        {
+            citiesOptions += "<option value=\"" + sortedCityList[cityId] + "\">" + sortedCityList[cityId] + "</option>";
         }
+        document.getElementById("city").innerHTML = citiesOptions;
+
+    }
+}
+
+
         try {
             (new Contact()).phoneNumber = phoneNumber.value;
             phoneNumberError.textContent = "";
