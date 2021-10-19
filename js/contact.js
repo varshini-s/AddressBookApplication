@@ -63,5 +63,15 @@ class Contact
         this._city = city;
     }
     
+    get state() 
+    {
+        return this._state;
+    }
+    set state(state) 
+    {
+        
+        this._state = state;
+   
+    }
 
 }
