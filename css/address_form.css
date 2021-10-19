@@ -288,3 +288,66 @@ button
     }
 
 }
+@media only screen and (max-width:800px) 
+{
+
+    .place
+    {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+    }
+    .place-content
+
+    {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+    select
+    {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+
+    .form
+    {
+        height: min-content;
+        width: 80%;
+
+    }
+    button
+    {
+        width:100px;
+    }
+    .addButton
+    {
+        margin-right: 20px;
+    }
+    .resetButton
+    {
+        margin-right: 40px;
+    }
+    .button-parent
+    {
+       margin-top: 50px;
+       margin-bottom: 50px;
+
+    }
+    .cancel-img
+    {
+        margin-right: 5px;
+
+    }
+
+    .form-text
+    {
+        width: 220px;
+        word-wrap: break-word;
+        text-align: center;
+
+    }
+
+}
