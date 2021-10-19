@@ -1,5 +1,5 @@
 const NAME_PATTERN = RegExp('^([A-Z]{1}[a-z]{2,})( [A-Z]{1}[a-z]{2,})*$');
-const ADDRESS_PATTERN = RegExp("^[a-zA-Z0-9 ,'-,]*$");
+const ADDRESS_PATTERN = RegExp("^[A-Z,a-z,0-9, ()#-]{3,}$");
 const PHONE_NUMBER_PATTERN = RegExp("^[+]?[91]{2}[ ]?[6-9][0-9]{9}$");
 const ZIP_PATTERN = RegExp("[0-9]{3}[ ]?[0-9]{3}$");
 
