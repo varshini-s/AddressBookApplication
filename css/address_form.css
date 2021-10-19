@@ -351,3 +351,37 @@ button
     }
 
 }
+
+@media only screen and (max-width:400px) 
+{
+    .row-content
+    {
+        margin:10px 20px;
+    }
+    .form-text
+    {
+        font: normal normal normal 22px/30px Roboto;
+        width: 100px;
+        word-wrap: break-word;
+        text-align: center;
+    }
+    .cancel
+    {
+        height: 30px;
+        width: 30px;
+    }
+    button
+    {
+        width:65px;
+        height: auto;
+    }
+    .addButton
+    {
+        margin-right: 5%;
+    }
+    .resetButton
+    {
+        margin-right: 20px;
+    }
+
+}
