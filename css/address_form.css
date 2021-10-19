@@ -137,3 +137,8 @@ body
     align-items: flex-start;
     margin:20px 120px;
 }
+
+.input-label
+{
+    width: 100%;
+}
