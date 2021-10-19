@@ -128,3 +128,12 @@ body
     margin-top: 8px;
 
 }
+.row-content
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    margin:20px 120px;
+}
