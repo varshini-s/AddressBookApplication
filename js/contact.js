@@ -20,6 +20,22 @@ class Contact
             throw "Name is Invalid";
         }
     }
+    get phoneNumber() 
+    {
+        return this._phoneNumber;
+    }
+    set phoneNumber(phoneNumber) 
+    {
+        if (PHONE_NUMBER_PATTERN.test(phoneNumber)) 
+        {
+            this._phoneNumber = phoneNumber;
+        }
+        else 
+        {
+            throw "PhoneNumber is Invalid";
+        }
+
+    }
 
     
 
