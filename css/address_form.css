@@ -196,3 +196,11 @@ select
     width: 100%;
     height: 50px;
 }
+error-output
+{
+    margin-left: 10px;
+    font-size: 12px;
+    font-style: italic;
+    color: red;
+    font: italic normal normal 13px/30px Roboto;
+}
