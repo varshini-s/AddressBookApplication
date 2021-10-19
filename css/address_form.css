@@ -104,3 +104,9 @@ body
     align-items: center;
 }
 
+.cancel-img
+{
+    margin-left: auto;
+    margin-right: 56px;
+
+}
