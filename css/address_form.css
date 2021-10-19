@@ -77,3 +77,15 @@ body
     margin-top: 67px;
     
 }
+
+.form-text
+{
+    text-align: left;
+    font: normal normal normal 28px/37px Roboto;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 1;
+
+
+}
