@@ -110,3 +110,8 @@ body
     margin-right: 56px;
 
 }
+
+.form-text
+{
+    position: absolute;
+}
