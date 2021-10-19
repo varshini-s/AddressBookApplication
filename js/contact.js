@@ -62,7 +62,7 @@ class Contact
 
         this._city = city;
     }
-    
+
     get state() 
     {
         return this._state;
@@ -73,5 +73,22 @@ class Contact
         this._state = state;
    
     }
+    get zip() 
+    {
+        return this._zip;
+    }
+    set zip(zip) 
+    {
+        if (ZIP_PATTERN.test(zip)) 
+        {
+            this._zip = zip;
+        }
+        else {
+            throw "Zip is Invalid";
+        }
+    }
+
+
+    
 
 }
