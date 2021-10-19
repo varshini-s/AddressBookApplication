@@ -204,6 +204,7 @@ error-output
     color: red;
     font: italic normal normal 13px/30px Roboto;
 }
+
 button
 {
     background: #E2E2E2 0% 0% no-repeat padding-box;
@@ -221,5 +222,12 @@ button
     padding: 7px 7px;
     border: 1px solid #707070;
     cursor: pointer;
+
+}
+.button-parent
+{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 90px;
 
 }
