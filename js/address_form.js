@@ -34,5 +34,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
+    const address = document.querySelector('#address');
+    const addressError = document.querySelector('.address-error');
+    address.addEventListener('input', function () {
+        if (address.value.length == 0) {
+            addressError.textContent = "";
+            return;
+        }
+        try {
+            (new AddressBook()).address = address.value;
+            addressError.textContent = "";
+
+        }
+        catch (e) {
+            addressError.textContent = e;
+        }
+    });
 });
 
