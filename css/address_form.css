@@ -162,3 +162,11 @@ body
     opacity: 1;
     resize: none;
 }
+
+.place
+{
+    width: 100%;
+    display: flex;
+    flex-wrap: row wrap;
+    justify-content: space-between;
+}
