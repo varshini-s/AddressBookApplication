@@ -118,3 +118,9 @@ function createAndUpdateStorage(contactData)
 
     localStorage.setItem("ContactList",JSON.stringify(contactList));
 }
+
+const getInputValueById =(id)=>{
+
+    let value=document.querySelector(id).value;
+    return value;
+}
