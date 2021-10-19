@@ -16,6 +16,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
             textError.textContent = e;
         }
     });
-    
+
+    const phoneNumber = document.querySelector('#phoneNumber');
+    const phoneNumberError = document.querySelector('.phone-number-error');
+    phoneNumber.addEventListener('input', function () {
+        if (phoneNumber.value.length == 0) {
+            phoneNumberError.textContent = "";
+            return;
+        }
+        try {
+            (new AddressBook()).phoneNumber = phoneNumber.value;
+            phoneNumberError.textContent = "";
+
+        }
+        catch (e) {
+            phoneNumberError.textContent = e;
+        }
+    });
+
 });
 
