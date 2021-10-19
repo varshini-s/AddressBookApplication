@@ -51,3 +51,55 @@ const save=(event)=>{
         
     }
 }
+
+
+const createContactData=()=>{
+
+    let contactData = new Contact();
+    
+    try
+    {
+        contactData.name =getInputValueById('#name');
+    }
+    catch(e)
+    {
+        setTextValue('.name-error',e);
+        throw e;
+    }
+    
+    try
+    {
+        contactData.address=getInputValueById('#address');
+    }
+    catch(e)
+    {
+        setTextValue('.address-error',e);
+        throw e;
+    }
+
+    try
+    {
+        contactData.phoneNumber=getInputValueById('#phoneNumber');
+    }
+    catch(e)
+    {
+        setTextValue('.phone-number-error',e);
+        throw e;
+    }
+
+    try
+    {
+        contactData.zip=getInputValueById('#zip');
+    }
+    catch(e)
+    {
+        setTextValue('.zip-error',e);
+        throw e;
+    }
+    contactData.city=getInputValueById('#city');
+    contactData.state=getInputValueById('#state');
+
+    return contactData;
+        
+}
+
