@@ -53,6 +53,15 @@ class Contact
         }
     }
 
+    get city() 
+    {
+        return this._city;
+    }
+    set city(city) 
+    {
+
+        this._city = city;
+    }
     
 
 }
