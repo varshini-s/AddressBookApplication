@@ -186,3 +186,8 @@ select
 
 
 }
+.place-content
+{
+    width: 250px;
+    height: 50px;
+}
