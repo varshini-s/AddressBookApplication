@@ -1,15 +1,13 @@
-window.addEventListener('DOMContentLoaded', (event) => {
 
-    const name = document.querySelector('#name');
-    const textError = document.querySelector('.name-error');
-    name.addEventListener('input', function () {
-        if (name.value.length == 0) {
-            textError.textContent = "";
-            return;
-        }
-        try {
-            (new Contact()).name = name.value;
-            textError.textContent = "";
+var stateToCityMap = {
+    "Rajasthan": ["Bikaner", "Jaisalmer", "Jodhpur", "Udaipur", "Ajmer"],
+    "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad", "Solapur"],
+    "Kerala": ["Kochi", "Kozhikode", "Thrissur", "Malappuram"],
+    "Karnataka": ["Bangalore", "Mysore", "Mangalore", "Mandya", "Hassan", "Bagalkot"],
+    "Assam": ["Guwahati", "Tezpur", "Dibrugarh", "Silchar", "North Lakhimpur"],
+    "Tamil Nadu": ["Tiruchirappalli", "Madurai", "Erode", "Vellore", "Coimbatore"],
+    "Meghalaya": ["Cherrapunji", "Tura", "Jowai", "Baghmara", "Nongpoh"]
+}
 
         }
         catch (e) {
