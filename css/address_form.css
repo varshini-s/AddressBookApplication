@@ -32,3 +32,22 @@ body
     height: 52px;
     margin-top: 5%;
 }
+.address-text
+{
+    font: normal normal bold 22px/25px Montserrat;
+    letter-spacing: 0px;
+    color: #008CFF;
+    text-transform: capitalize;
+    text-align: left;
+    width: 112px;
+    height: 27px;
+    font-weight: 1200;
+}
+.address-book
+{
+    color: #42515F;
+}
+*{
+    box-sizing: border-box;
+}
+
