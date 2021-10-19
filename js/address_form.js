@@ -30,49 +30,24 @@ function getCityOptions(value)
 }
 
 
-        try {
-            (new Contact()).phoneNumber = phoneNumber.value;
-            phoneNumberError.textContent = "";
 
-        }
-        catch (e) {
-            phoneNumberError.textContent = e;
-        }
-    });
+const save=(event)=>{
 
-    const address = document.querySelector('#address');
-    const addressError = document.querySelector('.address-error');
-    address.addEventListener('input', function () {
-        if (address.value.length == 0) {
-            addressError.textContent = "";
-            return;
-        }
-        try {
-            (new Contact()).address = address.value;
-            addressError.textContent = "";
 
-        }
-        catch (e) {
-            addressError.textContent = e;
-        }
-    });
+    event.preventDefault();
+    event.stopPropagation();
 
-    const zip = document.querySelector('#zip');
-    const zipError = document.querySelector('.zip-error');
-    zip.addEventListener('input', function () {
-        if (zip.value.length == 0) {
-            zipError.textContent = "";
-            return;
-        }
-        try {
-            (new Contact()).zip = zip.value;
-            zipError.textContent = "";
+    try {
 
-        }
-        catch (e) {
-            zipError.textContent = e;
-        }
-    });
-
-});
-
+        let contactData= createContactData();
+        createAndUpdateStorage(contactData);
+        resetForm();
+        window.location.replace(site_properties.home_page);
+        
+    }
+     catch (e) 
+    {
+        return;
+        
+    }
+}
