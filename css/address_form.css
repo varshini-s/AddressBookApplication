@@ -240,3 +240,34 @@ button
 {
     margin-right: 140px;
 }
+
+@media only screen and (max-width:1200px) 
+{
+    .row-content
+    {
+        margin:20px 40px;
+    }
+
+    select 
+    {
+        width: 85%;
+        
+    }
+    .cancel-img
+    {
+        margin-right: 30px;
+    }
+    button
+    {
+        width:140px;
+    }
+    .addButton
+    {
+        margin-right: 20px;
+    }
+
+    .resetButton
+    {
+        margin-right: 60px;
+    }
+}
