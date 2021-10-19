@@ -296,6 +296,11 @@ button
     {
         height: 70px;
     }
+    .cancel-img
+    {
+        margin-right: 5px;
+
+    }
 
 }
 @media only screen and (max-width:800px) 
