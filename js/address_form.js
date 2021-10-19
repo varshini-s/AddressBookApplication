@@ -140,3 +140,7 @@ const resetForm = () => {
     setTextValue('.zip-error', "");
 
 }
+const setValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.value = value;
+}
