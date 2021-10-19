@@ -231,3 +231,12 @@ button
     margin-top: 90px;
 
 }
+.addButton
+{
+    margin-right: 40px;
+}
+
+.resetButton
+{
+    margin-right: 140px;
+}
