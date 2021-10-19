@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             return;
         }
         try {
-            (new AddressBook()).name = name.value;
+            (new Contact()).name = name.value;
             textError.textContent = "";
 
         }
@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             return;
         }
         try {
-            (new AddressBook()).phoneNumber = phoneNumber.value;
+            (new Contact()).phoneNumber = phoneNumber.value;
             phoneNumberError.textContent = "";
 
         }
@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             return;
         }
         try {
-            (new AddressBook()).address = address.value;
+            (new Contact()).address = address.value;
             addressError.textContent = "";
 
         }
@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             return;
         }
         try {
-            (new AddressBook()).zip = zip.value;
+            (new Contact()).zip = zip.value;
             zipError.textContent = "";
 
         }
