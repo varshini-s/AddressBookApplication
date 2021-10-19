@@ -271,3 +271,20 @@ button
         margin-right: 60px;
     }
 }
+@media only screen and (max-width:1000px) 
+{
+    select 
+    {
+        width: 85%;
+        height: 70px;
+        padding: 0px 25px;
+        white-space: initial;
+        
+    }
+
+    .zip
+    {
+        height: 70px;
+    }
+
+}
