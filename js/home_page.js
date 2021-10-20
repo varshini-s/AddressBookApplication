@@ -1,27 +1,65 @@
 let contactList;
+
 window.addEventListener('DOMContentLoaded', (event) => {
-    contactList = getContactDataFromStorage();
-    document.querySelector(".contact-count").textContent = contactList.length;
-    createInnerHtml();
-    localStorage.removeItem('editContact');
+
+    if (site_properties.use_local_storage.match("true")) 
+    {
+        getContactDataFromStorage();
+    }
+    else 
+    {
+        getContactDataFromServer();
+    }
+
 });
 
 const getContactDataFromStorage = () => {
 
-    return localStorage.getItem('ContactList') ?
+    contactList = localStorage.getItem('ContactList') ?
         JSON.parse(localStorage.getItem('ContactList')) : [];
 
+    processAddressBookDataResponse();
 }
 
-const createInnerHtml = () => {
+const processAddressBookDataResponse = () => {
 
+    document.querySelector(".contact-count").textContent = contactList.length;
+    createInnerHtml();
+    localStorage.removeItem('editContact');
+}
+
+const getContactDataFromServer = () => {
+
+
+    makeServiceCall("GET", site_properties.server_url, true)
+        .then(responseText => {
+            contactList = JSON.parse(responseText);
+            processAddressBookDataResponse();
+        })
+        .catch(error => {
+            console.log("GET Error status: " + JSON.stringify(error));
+            contactList = [];
+            processAddressBookDataResponse();
+
+
+        });
+
+}
+const createInnerHtml = () => {
 
     const headerHTML = "<th>Fullname</th> <th>Address</th>" +
         "<th>City</th><th>State</th><th>Zip Code</th><th>Phone Number</th>";
     if (contactList.length == 0) document.querySelector('#table-display').innerHTML = "";
-    let innerHtml = `${headerHTML}`;
 
-    for (const contactData of contactList) {
+    let innerHtml = getInnerHtmlFromContactList(`${headerHTML}`);
+
+
+    document.querySelector('#table-display').innerHTML = innerHtml;
+}
+
+const getInnerHtmlFromContactList = (innerHtml) => {
+    for (const contactData of contactList) 
+    {
 
         innerHtml = `${innerHtml}
         
@@ -38,16 +76,17 @@ const createInnerHtml = () => {
             <img id="${contactData.id}" alt="edit" onclick="update(this)"
                     src="../assets/icons/create-black-18dp.svg">
         </td>
-
     </tr>
     `;
     }
 
-    document.querySelector('#table-display').innerHTML = innerHtml;
-}
+    return innerHtml;
+};
+
+const findContactDataFromList = (node) => contactData = contactList.find(contact => contact.id == node.id);
 
 const remove = (node) => {
-    let contactData = contactList.find(contactData => contactData.id == node.id);
+    let contactData = findContactDataFromList(node);
 
     if (!contactData) return;
     const index = contactList
@@ -55,9 +94,14 @@ const remove = (node) => {
         .indexOf(contactData.id);
     contactList.splice(index, 1);
 
-    localStorage.setItem("ContactList", JSON.stringify(contactList));
-    document.querySelector(".contact-count").textContent = contactList.length;
-    createInnerHtml();
+    if (site_properties.use_local_storage.match("true")) 
+    {
+        removeContactFromLocalStorage();
+
+    }
+    else {
+        removeContactFromServer();
+    }
 
     if (contactList.length == 0) {
         localStorage.setItem("ContactID", 0);
