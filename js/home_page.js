@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     contactList = getContactDataFromStorage();
     document.querySelector(".contact-count").textContent = contactList.length;
     createInnerHtml();
+    localStorage.removeItem('editContact');
 });
 
 const getContactDataFromStorage = () => {
@@ -32,9 +33,9 @@ const createInnerHtml = () => {
         <td>${contactData._zip}</td>
         <td>${contactData._phoneNumber}</td>
         <td>
-            <img id="${contactData.id}" onclick="remove(this)" alt="delete"
+            <img id="${contactData._id}" onclick="remove(this)" alt="delete"
                     src="../assets/icons/delete-black-18dp.svg">
-            <img id="${contactData.id}" alt="edit" onclick="update(this)"
+            <img id="${contactData._id}" alt="edit" onclick="update(this)"
                     src="../assets/icons/create-black-18dp.svg">
         </td>
 
@@ -46,7 +47,7 @@ const createInnerHtml = () => {
 }
 
 const remove = (node) => {
-    let contactData = contactList.find(empData => empData.id == node.id);
+    let contactData = contactList.find(contactData => contactData._id == node.id);
 
     if (!contactData) return;
     const index = contactList
@@ -54,8 +55,8 @@ const remove = (node) => {
         .indexOf(contactData.id);
     contactList.splice(index, 1);
 
-    localStorage.setItem("AddressBookList", JSON.stringify(contactList));
-    document.querySelector(".contact-count").textContent = empPayrollList.length;
+    localStorage.setItem("ContactList", JSON.stringify(contactList));
+    document.querySelector(".contact-count").textContent = contactList.length;
     createInnerHtml();
 
     if (contactList.length == 0) {
@@ -65,7 +66,7 @@ const remove = (node) => {
 }
 
 const update=(node)=>{
-    let contactData=contactList.find(contact=>contact.id==node.id)
+    let contactData=contactList.find(contact=>contact._id==node.id)
     if (!contactData) return;
     localStorage.setItem('editContact',JSON.stringify(contactData))
     window.location.replace(site_properties.address_form_page);
