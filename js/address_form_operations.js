@@ -88,29 +88,29 @@ const setAddressBookObject = () => {
 }
 
 const createOrUpdateLocalStorage = () => {
-    let addressBookList = JSON.parse(localStorage.getItem("ContactList"));
+    let contactList = JSON.parse(localStorage.getItem("ContactList"));
 
 
-    if (addressBookList) {
-        let addressBookData = addressBookList
+    if (contactList) {
+        let contactData = contactList
             .find(contactData => contactData.id == contactObj.id);
 
-        if (!addressBookData) {
-            addressBookList.push(contactObj);
+        if (!contactData) {
+            contactList.push(contactObj);
         }
         else {
-            const index = addressBookList
+            const index = contactList
                 .map(contactData => contactData.id)
-                .indexOf(addressBookData.id);
-            addressBookList.splice(index, 1, contactObj)
+                .indexOf(contactData.id);
+            contactList.splice(index, 1, contactObj)
         }
     }
 
     else {
-        addressBookList = [contactObj]
+        contactList = [contactObj]
     }
 
-    localStorage.setItem("ContactList", JSON.stringify(addressBookList));
+    localStorage.setItem("ContactList", JSON.stringify(contactList));
 };
 
 const createNewContactId = () => {
