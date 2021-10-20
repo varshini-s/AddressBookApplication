@@ -94,5 +94,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
+    checkForUpdate();
 
 });
