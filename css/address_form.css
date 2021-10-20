@@ -244,6 +244,11 @@ button
 {
     margin-right: 140px;
 }
+.resetButton:hover:enabled {
+    background-color: #969696 ;
+    color: white;
+  }
+
 @media only screen and (max-width:1800px) 
 {
     select 
