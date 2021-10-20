@@ -94,65 +94,66 @@ const createContactData = (id) => {
     setContactData(contactData);
     return contactData;
 }
-    
-    try
-    {
-        contactData.name =getInputValueById('#name');
-    }
-    catch(e)
-    {
-        setTextValue('.name-error',e);
-        throw e;
-    }
-    
-    try
-    {
-        contactData.address=getInputValueById('#address');
-    }
-    catch(e)
-    {
-        setTextValue('.address-error',e);
-        throw e;
-    }
 
-    try
-    {
-        contactData.phoneNumber=getInputValueById('#phoneNumber');
-    }
-    catch(e)
-    {
-        setTextValue('.phone-number-error',e);
-        throw e;
-    }
+const createNewContactId = () => {
 
-    try
-    {
-        contactData.zip=getInputValueById('#zip');
-    }
-    catch(e)
-    {
-        setTextValue('.zip-error',e);
-        throw e;
-    }
-    contactData.city=getInputValueById('#city');
-    contactData.state=getInputValueById('#state');
-
-    return contactData;
-        
+    let contactID = localStorage.getItem("ContactID");
+    contactID = !contactID ? 1 : (parseInt(contactID) + 1).toString();
+    localStorage.setItem("ContactID", contactID);
+    return contactID;
 }
 
-function createAndUpdateStorage(contactData)
-{
-    let contactList=JSON.parse(localStorage.getItem("ContactList"));
-    
-    if(contactList!=undefined)
+const setContactData = (contactData) => {
+    try 
     {
-        contactList.push(contactData);
+        contactData.name = addressBookObj._name;
     }
-    else
+    catch (e) 
     {
-        contactList=[contactData]
+        setTextValue('.name-error', e);
+        throw e;
     }
+
+    try 
+    {
+        contactData.phoneNumber = addressBookObj._phoneNumber;
+    }
+    catch (e) 
+    {
+        setTextValue('.phone-number-error', e);
+        throw e;
+    }
+
+    try 
+    {
+        contactData.address = addressBookObj._address;
+    }
+    catch (e) 
+    {
+        setTextValue('.address-error', e);
+        throw e;
+    }
+
+    try 
+    {
+        contactData.zip = addressBookObj._zip;
+    }
+    catch (e) 
+    {
+        setTextValue('.zip-error', e);
+        throw e;
+    }
+
+    contactData.state = addressBookObj._state;
+    contactData.city = addressBookObj._city;
+
+}
+
+const getInputValueById = (id) => {
+
+    let value = document.querySelector(id).value;
+    return value;
+}
 
     localStorage.setItem("ContactList",JSON.stringify(contactList));
 }
