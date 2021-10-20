@@ -1,3 +1,5 @@
+var isUpdate = false;
+var addressBookObj = {};
 
 var stateToCityMap = {
     "Rajasthan": ["Bikaner", "Jaisalmer", "Jodhpur", "Udaipur", "Ajmer"],
@@ -9,8 +11,7 @@ var stateToCityMap = {
     "Meghalaya": ["Cherrapunji", "Tura", "Jowai", "Baghmara", "Nongpoh"]
 }
 
-function getCityOptions(value) 
-{
+function getCityOptions(value) {
     document.getElementById("city").disabled = false;
 
     if (value.length == 0) {
@@ -18,10 +19,9 @@ function getCityOptions(value)
     }
     else {
         let citiesOptions = "<option value=\"\" disabled selected>Select City</option>";
-        let sortedCityList=stateToCityMap[value].sort();
-        
-        for (cityId in sortedCityList) 
-        {
+        let sortedCityList = stateToCityMap[value].sort();
+
+        for (cityId in sortedCityList) {
             citiesOptions += "<option value=\"" + sortedCityList[cityId] + "\">" + sortedCityList[cityId] + "</option>";
         }
         document.getElementById("city").innerHTML = citiesOptions;
@@ -31,25 +31,33 @@ function getCityOptions(value)
 
 
 
-const save=(event)=>{
+const save = (event) => {
 
 
     event.preventDefault();
     event.stopPropagation();
 
     try {
-
-        let contactData= createContactData();
-        createAndUpdateStorage(contactData);
+        setAddressBookObject();
+        createAndUpdateStorage();
         resetForm();
         window.location.replace(site_properties.home_page);
-        
+
     }
-     catch (e) 
-    {
+    catch (e) {
         return;
-        
+
     }
+}
+
+const setAddressBookObject = () => {
+
+    addressBookObj._name = getInputValueById('#name');
+    addressBookObj._phoneNumber = getInputValueById('#phoneNumber');
+    addressBookObj._address = getInputValueById('#address');
+    addressBookObj._city = getInputValueById('#city');
+    addressBookObj._state = getInputValueById('#state');
+    addressBookObj._zip = getInputValueById('#zip');
 }
 
 
