@@ -164,10 +164,16 @@ const checkForUpdate = () => {
     setForm();
 }
 
-const getInputValueById =(id)=>{
 
-    let value=document.querySelector(id).value;
-    return value;
+const setForm = () => {
+
+    setValue('#name', addressBookObj._name);
+    setValue('#phoneNumber', addressBookObj._phoneNumber);
+    setValue('#address', addressBookObj._address);
+    setValue('#state', addressBookObj._state);
+    getCityOptions(addressBookObj._state);
+    setValue('#city', addressBookObj._city);
+    setValue('#zip', addressBookObj._zip);
 }
 
 const resetForm = () => {
