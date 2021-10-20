@@ -63,3 +63,10 @@ const remove = (node) => {
 
     }
 }
+
+const update=(node)=>{
+    let contactData=contactList.find(contact=>contact.id==node.id)
+    if (!contactData) return;
+    localStorage.setItem('editContact',JSON.stringify(contactData))
+    window.location.replace(site_properties.address_form_page);
+}
