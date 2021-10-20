@@ -235,6 +235,10 @@ button
 {
     margin-right: 40px;
 }
+.addButton:hover:enabled {
+    background-color: #008CFF;
+    color: white;
+  }
 
 .resetButton
 {
