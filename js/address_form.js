@@ -1,5 +1,5 @@
 var isUpdate = false;
-var addressBookObj = {};
+var contactObj = {};
 
 var stateToCityMap = {
     "Rajasthan": ["Bikaner", "Jaisalmer", "Jodhpur", "Udaipur", "Ajmer"],
@@ -11,7 +11,7 @@ var stateToCityMap = {
     "Meghalaya": ["Cherrapunji", "Tura", "Jowai", "Baghmara", "Nongpoh"]
 }
 
-function getCityOptions(value) {
+const getCityOptionsForGivenState = (value) => {
     document.getElementById("city").disabled = false;
 
     if (value.length == 0) {
@@ -19,22 +19,15 @@ function getCityOptions(value) {
     }
     else {
         let citiesOptions = "<option value=\"\" disabled selected>Select City</option>";
-        let sortedCityList=stateToCityMap[value].sort();
-        
-        for (cityId in sortedCityList) 
-        {
+        let sortedCityList = stateToCityMap[value].sort();
+
+        for (cityId in sortedCityList) {
             citiesOptions += "<option value=\"" + sortedCityList[cityId] + "\">" + sortedCityList[cityId] + "</option>";
         }
         document.getElementById("city").innerHTML = citiesOptions;
 
     }
-}
-
-function resetSelection() {
-    document.getElementById("state").selectedIndex = 0;
-    document.getElementById("city").selectedIndex = 0;
-}
-
+};
 
 
 const save = (event) => {
@@ -45,12 +38,12 @@ const save = (event) => {
     try {
         setAddressBookObject();
         if (site_properties.use_local_storage.match("true")) {
-            createAndUpdateStorage();
+            createOrUpdateLocalStorage();
             resetForm();
             window.location.replace(site_properties.home_page);
         }
         else {
-            createOrUpdateAddressBookContact();
+            createOrUpdateDataInServer();
         }
 
     }
@@ -60,16 +53,16 @@ const save = (event) => {
     }
 }
 
-const createOrUpdateAddressBookContact = () => {
+const createOrUpdateDataInServer = () => {
 
     let postURL = site_properties.server_url;
     let methodCall = "POST";
     if (isUpdate) {
         methodCall = "PUT";
-        postURL = postURL + addressBookObj.id.toString();
+        postURL = postURL + contactObj.id.toString();
     }
 
-    makeServiceCall(methodCall, postURL, true, addressBookObj)
+    makeServiceCall(methodCall, postURL, true, contactObj)
         .then(responseText => {
             resetForm();
             window.location.replace(site_properties.home_page);
@@ -83,42 +76,42 @@ const createOrUpdateAddressBookContact = () => {
 const setAddressBookObject = () => {
 
     if (!isUpdate && site_properties.use_local_storage.match("true")) {
-        addressBookObj.id = createNewContactId();
+        contactObj.id = createNewContactId();
     }
 
-    addressBookObj._name = getInputValueById('#name');
-    addressBookObj._phoneNumber = getInputValueById('#phoneNumber');
-    addressBookObj._address = getInputValueById('#address');
-    addressBookObj._city = getInputValueById('#city');
-    addressBookObj._state = getInputValueById('#state');
-    addressBookObj._zip = getInputValueById('#zip');
+    contactObj._name = getInputValueById('#name');
+    contactObj._phoneNumber = getInputValueById('#phoneNumber');
+    contactObj._address = getInputValueById('#address');
+    contactObj._city = getInputValueById('#city');
+    contactObj._state = getInputValueById('#state');
+    contactObj._zip = getInputValueById('#zip');
 }
 
-function createAndUpdateStorage() {
-    let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
+const createOrUpdateLocalStorage = () => {
+    let addressBookList = JSON.parse(localStorage.getItem("ContactList"));
 
 
     if (addressBookList) {
         let addressBookData = addressBookList
-            .find(contactData => contactData.id == addressBookObj.id);
+            .find(contactData => contactData.id == contactObj.id);
 
         if (!addressBookData) {
-            addressBookList.push(addressBookObj);
+            addressBookList.push(contactObj);
         }
         else {
             const index = addressBookList
                 .map(contactData => contactData.id)
                 .indexOf(addressBookData.id);
-            addressBookList.splice(index, 1, addressBookObj)
+            addressBookList.splice(index, 1, contactObj)
         }
     }
 
     else {
-        addressBookList = [addressBookObj]
+        addressBookList = [contactObj]
     }
 
-    localStorage.setItem("AddressBookList", JSON.stringify(addressBookList));
-}
+    localStorage.setItem("ContactList", JSON.stringify(addressBookList));
+};
 
 const createNewContactId = () => {
 
@@ -136,9 +129,10 @@ const getInputValueById = (id) => {
 
 
 const checkForUpdate = () => {
-    const addressBookJson = localStorage.getItem('editContact');
-    isUpdate = addressBookJson ? true : false;
+    const contactJson = localStorage.getItem('editContact');
+    isUpdate = contactJson ? true : false;
     if (!isUpdate) return;
-    addressBookObj = JSON.parse(addressBookJson);
+    contactObj = JSON.parse(contactJson);
     setForm();
 }
+
