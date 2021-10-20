@@ -1,6 +1,6 @@
 let contactList;
-window.addEventListener('DOMContentLoaded',(event)=>{
-    contactList=getContactDataFromStorage();
+window.addEventListener('DOMContentLoaded', (event) => {
+    contactList = getContactDataFromStorage();
     document.querySelector(".contact-count").textContent = contactList.length;
     createInnerHtml();
 });
@@ -43,4 +43,23 @@ const createInnerHtml = () => {
     }
 
     document.querySelector('#table-display').innerHTML = innerHtml;
+}
+
+const remove = (node) => {
+    let contactData = contactList.find(empData => empData.id == node.id);
+
+    if (!contactData) return;
+    const index = contactList
+        .map(contact => contact.id)
+        .indexOf(contactData.id);
+    contactList.splice(index, 1);
+
+    localStorage.setItem("AddressBookList", JSON.stringify(contactList));
+    document.querySelector(".contact-count").textContent = empPayrollList.length;
+    createInnerHtml();
+
+    if (contactList.length == 0) {
+        localStorage.setItem("ContactID", 0);
+
+    }
 }
