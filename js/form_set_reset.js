@@ -16,12 +16,16 @@ const resetForm = () => {
     setValue('#address', '');
     setValue('#zip', '');
     setSelectedIndex('#city', 0);
-    document.getElementById("city").disabled = true;
     setSelectedIndex('#state', 0);
     setTextValue('.name-error', "");
     setTextValue('.phone-number-error', "");
     setTextValue('.address-error', "");
     setTextValue('.zip-error', "");
+    document.getElementById("city").disabled = true;
+    document.getElementById("addButton").disabled = true;
+    document.getElementById("resetButton").disabled = true;
+
+
 
 }
 const setValue = (id, value) => {

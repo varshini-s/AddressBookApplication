@@ -25,59 +25,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 });
 
-const setButtonDisableProperty = () => {
 
-    checkAllInputFieldsAreFilled();
-    checkNoInvalidInput();
-};
-
-
-const checkAllInputFieldsAreFilled = () => {
-    const name = document.querySelector('#name');
-    const phoneNumber = document.querySelector('#phoneNumber');
-    const address = document.querySelector('#address');
-    const zip = document.querySelector('#zip');
-    const city = document.querySelector('#city');
-    const state = document.querySelector('#state');
-
-    const form = document.querySelector('.form');
-    form.addEventListener('input', function () {
-        if (name.value == "" || phoneNumber.value == "" || address.value == "" || zip.value == "" || state.selectedIndex == 0 || city.selectedIndex == 0) {
-            document.getElementById("addButton").disabled = true;
-        }
-        else {
-            document.getElementById("addButton").disabled = false;
-
-        }
-
-        if(name.value == "" && phoneNumber.value == "" && address.value == "" && zip.value == "" && state.selectedIndex == 0 && city.selectedIndex == 0)
-        {
-            document.getElementById("resetButton").disabled = true;
-        }
-        else {
-            document.getElementById("resetButton").disabled = false;
-
-        }
-    });
-};
-
-const checkNoInvalidInput = () => {
-    const form = document.querySelector('.form');
-    form.addEventListener('input', () => {
-        const textError = document.querySelector('.name-error');
-        const phoneNumberError = document.querySelector('.phone-number-error');
-        const addressError = document.querySelector('.address-error');
-        const zipError = document.querySelector('.zip-error');
-
-        if (textError.textContent != "" || phoneNumberError.textContent != "" || addressError.textContent != "" || zipError.textContent != "") {
-            document.getElementById("addButton").disabled = true;
-        }
-        else {
-            document.getElementById("addButton").disabled = false;
-
-        }
-    });
-};
 
 const validateAndDisplayError = (inputField, errorField, validationFunction) => {
 
@@ -117,5 +65,61 @@ const sortAndDisplayStateOptions = () => {
         stateOptions += "<option>" + sortedStateList[state] + "</option>";
     }
     document.getElementById("state").innerHTML = stateOptions;
+    document.getElementById("city").disabled = true;
+
 
 }
+
+
+const setButtonDisableProperty = () => {
+
+    checkAllInputFieldsAreFilled();
+    checkNoInvalidInput();
+};
+
+
+const checkAllInputFieldsAreFilled = () => {
+    const name = document.querySelector('#name');
+    const phoneNumber = document.querySelector('#phoneNumber');
+    const address = document.querySelector('#address');
+    const zip = document.querySelector('#zip');
+    const city = document.querySelector('#city');
+    const state = document.querySelector('#state');
+
+        if (name.value == "" || phoneNumber.value == "" || address.value == "" || zip.value == "" || state.selectedIndex == 0 || city.selectedIndex == 0) {
+            document.getElementById("addButton").disabled = true;
+        }
+        else {
+            document.getElementById("addButton").disabled = false;
+
+        }
+
+        if(name.value == "" && phoneNumber.value == "" && address.value == "" && zip.value == "" && state.selectedIndex == 0 && city.selectedIndex == 0)
+        {
+            document.getElementById("resetButton").disabled = true;
+        }
+        else {
+            document.getElementById("resetButton").disabled = false;
+
+        }
+
+};
+
+const checkNoInvalidInput = () => {
+    const form = document.querySelector('.form');
+    form.addEventListener('input', () => {
+        const textError = document.querySelector('.name-error');
+        const phoneNumberError = document.querySelector('.phone-number-error');
+        const addressError = document.querySelector('.address-error');
+        const zipError = document.querySelector('.zip-error');
+
+        if (textError.textContent != "" || phoneNumberError.textContent != "" || addressError.textContent != "" || zipError.textContent != "") {
+            document.getElementById("addButton").disabled = true;
+        }
+    });
+};
+
+
+const form = document.querySelector('.form');
+form.addEventListener('input', setButtonDisableProperty);
+
