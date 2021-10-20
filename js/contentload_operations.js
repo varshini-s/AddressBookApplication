@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
-    setAddButtonDisableProperty();
+    setButtonDisableProperty();
     sortAndDisplayStateOptions();
 
     const name = document.querySelector('#name');
@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 });
 
-const setAddButtonDisableProperty = () => {
+const setButtonDisableProperty = () => {
 
     checkAllInputFieldsAreFilled();
     checkNoInvalidInput();
@@ -47,6 +47,15 @@ const checkAllInputFieldsAreFilled = () => {
         }
         else {
             document.getElementById("addButton").disabled = false;
+
+        }
+
+        if(name.value == "" && phoneNumber.value == "" && address.value == "" && zip.value == "" && state.selectedIndex == 0 && city.selectedIndex == 0)
+        {
+            document.getElementById("resetButton").disabled = true;
+        }
+        else {
+            document.getElementById("resetButton").disabled = false;
 
         }
     });
