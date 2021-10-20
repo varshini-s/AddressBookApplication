@@ -1,9 +1,19 @@
+let contactList;
 window.addEventListener('DOMContentLoaded',(event)=>{
+    contactList=getContactDataFromStorage();
+    document.querySelector(".contact-count").textContent = contactList.length;
     createInnerHtml();
 });
+
+const getContactDataFromStorage = () => {
+
+    return localStorage.getItem('ContactList') ?
+        JSON.parse(localStorage.getItem('ContactList')) : [];
+
+}
+
 const createInnerHtml = () => {
 
-    contactList=createContactDataJSON();
 
     const headerHTML = "<th>Fullname</th> <th>Address</th>" +
         "<th>City</th><th>State</th><th>Zip Code</th><th>Phone Number</th>";
@@ -33,39 +43,4 @@ const createInnerHtml = () => {
     }
 
     document.querySelector('#table-display').innerHTML = innerHtml;
-}
-
-const createContactDataJSON=()=>{
-    let contactListLocal=
-
-    [
-        {
-            _name: "Emma Green",
-            _address: "Marve Road,Next to Maniratna,Malad(west) a ",
-            _phoneNumber: "919123412341",
-            _zip: "560086",
-            _city: "Bagalkot",
-            _state: "Karnataka"
-        },
-        {
-            _name: "Lisa Kudrow",
-            _address: "Star House, R K Singh Marg, P P Road, Andheri (east)",
-            _phoneNumber: "91 9188444412",
-            _zip: "560086",
-            _city: "Bagalkot",
-            _state: "Karnataka"
-        },
-        {
-            _name: "Emma Green",
-            _address: "Marve Road,Next to Maniratna,Malad(west)",
-            _phoneNumber: "919123412341",
-            _zip: "789122",
-            _city: "Bagalkot",
-            _state: "Karnataka"
-        }
-    ]
-
-
-    
-    return contactListLocal;
 }
