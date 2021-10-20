@@ -34,3 +34,38 @@ const createInnerHtml = () => {
 
     document.querySelector('#table-display').innerHTML = innerHtml;
 }
+
+const createContactDataJSON=()=>{
+    let contactListLocal=
+
+    [
+        {
+            _name: "Emma Green",
+            _address: "Marve Road,Next to Maniratna,Malad(west) a ",
+            _phoneNumber: "919123412341",
+            _zip: "560086",
+            _city: "Bagalkot",
+            _state: "Karnataka"
+        },
+        {
+            _name: "Lisa Kudrow",
+            _address: "Star House, R K Singh Marg, P P Road, Andheri (east)",
+            _phoneNumber: "91 9188444412",
+            _zip: "560086",
+            _city: "Bagalkot",
+            _state: "Karnataka"
+        },
+        {
+            _name: "Emma Green",
+            _address: "Marve Road,Next to Maniratna,Malad(west)",
+            _phoneNumber: "919123412341",
+            _zip: "789122",
+            _city: "Bagalkot",
+            _state: "Karnataka"
+        }
+    ]
+
+
+    
+    return contactListLocal;
+}
