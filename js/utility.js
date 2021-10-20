@@ -9,7 +9,7 @@ const checkName=(name)=>{
 
 const checkAddress=(address)=>{
 
-    let addressregex=RegExp("^[a-zA-Z0-9 ,'-/,]*$");
+    let addressregex=RegExp("(?!^\\d+$)^[A-Z,a-z,0-9, ()#-]{3,}$");
     if(!addressregex.test(address))
     {
         throw "Address is Incorrect";
@@ -31,7 +31,7 @@ const checkPhoneNumber=(phoneNumber)=>{
 
 const checkZip=(zip)=>{
 
-    let zipRegex=RegExp("[0-9]{3}[ ]?[0-9]{3}$");
+    let zipRegex=RegExp("^[0-9]{3}[ ]?[0-9]{3}$");
     if(!zipRegex.test(zip))
     {
         throw "Zip is Incorrect";
