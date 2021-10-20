@@ -66,16 +66,16 @@ function createAndUpdateStorage() {
 
     if (addressBookList) {
         let addressBookData = addressBookList
-            .find(contactData => contactData._id == addressBookObj._id);
+            .find(contactData => contactData.id == addressBookObj.id);
 
         if (!addressBookData) {
             addressBookList.push(createContactData());
         }
         else {
             const index = addressBookList
-                .map(contactData => contactData._id)
-                .indexOf(addressBookData._id);
-            addressBookList.splice(index, 1, createContactData(addressBookData._id))
+                .map(contactData => contactData.id)
+                .indexOf(addressBookData.id);
+            addressBookList.splice(index, 1, createContactData(addressBookData.id))
         }
     }
 
@@ -89,8 +89,8 @@ function createAndUpdateStorage() {
 const createContactData = (id) => {
 
     let contactData = new Contact();
-    if (!id) contactData._id = createNewContactId();
-    else contactData._id = id;
+    if (!id) contactData.id = createNewContactId();
+    else contactData.id = id;
     setContactData(contactData);
     return contactData;
 }
