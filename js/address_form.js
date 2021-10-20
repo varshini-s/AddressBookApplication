@@ -155,7 +155,13 @@ const getInputValueById = (id) => {
     return value;
 }
 
-    localStorage.setItem("ContactList",JSON.stringify(contactList));
+
+const checkForUpdate = () => {
+    const addressBookJson = localStorage.getItem('editContact');
+    isUpdate = addressBookJson ? true : false;
+    if (!isUpdate) return;
+    addressBookObj = JSON.parse(addressBookJson);
+    setForm();
 }
 
 const getInputValueById =(id)=>{
