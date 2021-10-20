@@ -60,10 +60,40 @@ const setAddressBookObject = () => {
     addressBookObj._zip = getInputValueById('#zip');
 }
 
+function createAndUpdateStorage() {
+    let addressBookList = JSON.parse(localStorage.getItem("ContactList"));
 
-const createContactData=()=>{
+
+    if (addressBookList) {
+        let addressBookData = addressBookList
+            .find(contactData => contactData._id == addressBookObj._id);
+
+        if (!addressBookData) {
+            addressBookList.push(createContactData());
+        }
+        else {
+            const index = addressBookList
+                .map(contactData => contactData._id)
+                .indexOf(addressBookData._id);
+            addressBookList.splice(index, 1, createContactData(addressBookData._id))
+        }
+    }
+
+    else {
+        addressBookList = [createContactData()]
+    }
+
+    localStorage.setItem("ContactList", JSON.stringify(addressBookList));
+}
+
+const createContactData = (id) => {
 
     let contactData = new Contact();
+    if (!id) contactData._id = createNewContactId();
+    else contactData._id = id;
+    setContactData(contactData);
+    return contactData;
+}
     
     try
     {
