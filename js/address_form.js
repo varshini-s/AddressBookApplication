@@ -64,7 +64,10 @@ const createOrUpdateAddressBookContact = () => {
 
     let postURL = site_properties.server_url;
     let methodCall = "POST";
-    
+    if (isUpdate) {
+        methodCall = "PUT";
+        postURL = postURL + addressBookObj.id.toString();
+    }
 
     makeServiceCall(methodCall, postURL, true, addressBookObj)
         .then(responseText => {
