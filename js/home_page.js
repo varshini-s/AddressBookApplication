@@ -109,9 +109,32 @@ const remove = (node) => {
     }
 }
 
-const update=(node)=>{
-    let contactData=contactList.find(contact=>contact.id==node.id)
+
+const removeContactFromLocalStorage = () => {
+    localStorage.setItem("ContactList", JSON.stringify(contactList));
+    refreshHomePage();
+};
+
+
+const removeContactFromServer = () => {
+    const deleteURL = site_properties.server_url + contactData.id.toString();
+    makeServiceCall("DELETE", deleteURL, false)
+        .then(responseText => {
+            refreshHomePage();
+        })
+        .catch(error => {
+            console.log("DELETE Error status: " + JSON, stringify(error))
+        })
+};
+
+const update = (node) => {
+    let contactData = findContactDataFromList(node);
     if (!contactData) return;
-    localStorage.setItem('editContact',JSON.stringify(contactData))
+    localStorage.setItem('editContact', JSON.stringify(contactData))
     window.location.replace(site_properties.address_form_page);
 }
+
+const refreshHomePage = () => {
+    createInnerHtml();
+    document.querySelector(".contact-count").textContent = contactList.length;
+};
