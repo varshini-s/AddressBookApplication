@@ -203,3 +203,49 @@ td
 {
     height: 65px;
 }
+
+@media only screen and (max-width:500px) 
+{
+
+    .add-button
+    {
+        width: 150px;
+        font-size: 20px;
+        padding: 5px;
+
+    }
+    .add-img
+    {
+        width: 30px;
+
+    }
+    .contact-detail-text
+    {
+        font-size: 20px;
+
+    }
+
+}
+
+@media only screen and (max-width:400px) 
+{
+    .header-content
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .add-button
+    {
+        margin-top: 15px;
+        font-size: 15px;
+        padding: 2px;
+    }
+    .contact-detail-text
+    {
+        font-size: 17px;
+
+    }
+
+}
