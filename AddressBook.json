@@ -1,0 +1,49 @@
+{
+  "AddressBook": [
+    {
+      "_name": "Emma Green Geller",
+      "_phoneNumber": "919123412341",
+      "_address": "Marve Road,Next to Maniratna,Malad(west)",
+      "_city": "Dibrugarh",
+      "_state": "Assam",
+      "_zip": "789122",
+      "id": 1
+    },
+    {
+      "_name": "Hope Mikaelson",
+      "_phoneNumber": "919123412341",
+      "_address": "Marve Road,Next to Maniratna,Malad(west)",
+      "_city": "Bangalore",
+      "_state": "Karnataka",
+      "_zip": "567789",
+      "id": 2
+    },
+    {
+      "_name": "Mike Hannigan",
+      "_phoneNumber": "919123412341",
+      "_address": "Star House, R K Singh Marg, P P Road, Andheri (east)",
+      "_city": "Erode",
+      "_state": "Tamil Nadu",
+      "_zip": "567789",
+      "id": 3
+    },
+    {
+      "_name": "Lisa Kudrow",
+      "_phoneNumber": "91 8999123444",
+      "_address": "Star House, R K Singh Marg, P P Road, Andheri (east)",
+      "_city": "Malappuram",
+      "_state": "Kerala",
+      "_zip": "345333",
+      "id": 5
+    },
+    {
+      "_name": "Mike",
+      "_phoneNumber": "+91 9877878888",
+      "_address": "Abc Street",
+      "_city": "Kochi",
+      "_state": "Kerala",
+      "_zip": "123444",
+      "id": 6
+    }
+  ]
+}
